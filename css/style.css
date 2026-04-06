@@ -119,6 +119,8 @@ body {
     color: var(--text-black-900);
     transition: background-color 0.4s ease;
     overflow-x: hidden;
+    width: 100%;
+    position: relative;
     cursor: none;
     /* Hide default cursor */
 }
@@ -452,6 +454,11 @@ h6 {
     justify-content: center;
 }
 
+.home-info {
+    flex: 0 0 60%;
+    max-width: 60%;
+}
+
 .home-info h3.hello {
     font-size: 1.8rem;
     font-weight: 500;
@@ -486,6 +493,8 @@ h6 {
 }
 
 .home-img {
+    flex: 0 0 40%;
+    max-width: 40%;
     position: relative;
     display: flex;
     justify-content: center;
@@ -839,28 +848,102 @@ h6 {
     padding: 0 50px;
 }
 
+/* --- NAV TOGGLER STYLES --- */
+.nav-toggler {
+    height: 40px;
+    width: 45px;
+    border: 1px solid var(--glass-border);
+    cursor: pointer;
+    position: fixed;
+    right: 25px;
+    top: 20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: var(--glass-bg);
+    backdrop-filter: blur(5px);
+    border-radius: 8px;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.nav-toggler span {
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    display: inline-block;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.nav-toggler.open span {
+    background: transparent;
+}
+
+.nav-toggler span::before {
+    content: '';
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    position: absolute;
+    top: -6px;
+    left: 0;
+}
+
+.nav-toggler.open span::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.nav-toggler span::after {
+    content: '';
+    height: 2px;
+    width: 18px;
+    background: var(--skin-color);
+    position: absolute;
+    top: 6px;
+    left: 0;
+}
+
+.nav-toggler.open span::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
 /* media screen */
 
 @media (max-width:1199px) {
-    .aside {
-        left: -270px;
+    .nav-toggler {
+        display: flex;
     }
 
-    .main-contant {
+    .aside {
+        left: -270px;
+        box-shadow: none;
+    }
+
+    .aside.open {
+        left: 0;
+        box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+
+    .main-container {
         padding-left: 0;
     }
 
+    .section {
+        padding: 50px 15px;
+    }
+
     .about .about-contant .personal-info .info-item p span {
-        display: block;
-        margin-left: 0;
+        display: inline-block;
+        margin-left: 5px;
     }
 }
 
 @media (max-width:991px) {
-
     .contant .contant-info-item,
-    .portfolio .portfolio-item,
-    .service .service-item {
+    .portfolio .portfolio-item {
         flex: 0 0 50%;
         max-width: 50%;
     }
@@ -868,6 +951,11 @@ h6 {
     .home .home-info {
         flex: 0 0 100%;
         max-width: 100%;
+        text-align: center;
+    }
+
+    .home-info p {
+        margin: 0 auto 30px;
     }
 
     .home .home-img {
@@ -875,17 +963,91 @@ h6 {
     }
 }
 
-@media (max-width:757px) {
-
-    .service .service-item,
+@media (max-width:767px) {
     .portfolio .portfolio-item,
     .contant .contant-info-item,
-    .contant .conatnt-form .col-6,
-    .about .about-contant .skills,
-    .about .about-contant .education,
-    .about .about-contant .experience,
-    .about .about-contant .personal-info {
+    .contant .conatnt-form .col-6 {
         flex: 0 0 100%;
         max-width: 100%;
+    }
+
+    .personal-info .row {
+        grid-template-columns: 1fr; /* Single column for personal info on small mobile */
+        gap: 10px;
+    }
+
+    .personal-info .buttons {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .personal-info .buttons .btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .section-title h2 {
+        font-size: 2.2rem;
+    }
+
+    .home-info h3.hello {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+    }
+
+    .home-info h3.hello span {
+        font-size: 1.8rem;
+        display: block; /* Stack name on new line for very narrow screens */
+        margin-top: 5px;
+    }
+
+    .home-info h3.my-profession {
+        font-size: 1.6rem;
+        line-height: 1.4;
+        margin: 15px 0;
+    }
+    
+    .home-info p {
+        font-size: 1rem;
+        line-height: 1.6;
+        padding: 0 10px;
+    }
+    
+    .cursor, .cursor-inner {
+        display: none; /* Hide custom cursor on mobile touch */
+    }
+    
+    body {
+        cursor: auto;
+    }
+
+    .aside {
+        width: 250px; /* Slightly narrower sidebar on mobile */
+    }
+
+    .timline {
+        padding: 40px 20px;
+    }
+
+    .timline-item {
+        padding-left: 35px;
+    }
+
+    .portfolio-item-inner .portfolio-info {
+        padding: 15px;
+    }
+
+    /* Fix for small screens like iPhone SE */
+    @media (max-width: 380px) {
+        .section-title h2 {
+            font-size: 1.8rem;
+        }
+        .home-info h3.hello {
+            font-size: 1.2rem;
+        }
+        .home-info h3.my-profession {
+            font-size: 1.5rem;
+        }
     }
 }

@@ -103,3 +103,27 @@ document.querySelectorAll("a, button, .portfolio-item-inner, .logo, .info-item")
         cursorInner.classList.remove("grow");
     });
 });
+
+// --- NAV TOGGLER (FOR MOBILE) ---
+const navTogglerBtn = document.querySelector(".nav-toggler");
+const aside = document.querySelector(".aside");
+
+if (navTogglerBtn) {
+    navTogglerBtn.addEventListener("click", () => {
+        asideSectionTogglerBtn();
+    });
+}
+
+function asideSectionTogglerBtn() {
+    aside.classList.toggle("open");
+    navTogglerBtn.classList.toggle("open");
+}
+
+// Close aside when clicking a nav link (on mobile)
+document.querySelectorAll(".nav li a").forEach(link => {
+    link.addEventListener("click", () => {
+        if (window.innerWidth < 1200 && aside.classList.contains("open")) {
+            asideSectionTogglerBtn();
+        }
+    });
+});

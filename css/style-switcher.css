@@ -84,3 +84,16 @@
 .style-switcher .color-5 {
     background-color: #f012b2;
 }
+
+/* media screen for overlap fix */
+@media (max-width: 1199px) {
+    .style-switcher .style-switcher-toggle {
+        top: 70px; /* Move down so it doesn't overlap with Hamburger */
+    }
+    .style-switcher .day-night {
+        top: 125px;
+    }
+    .style-switcher .s-icon {
+        margin-right: 10px; /* Closer to edge for better spacing */
+    }
+}
