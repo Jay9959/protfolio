@@ -1,3 +1,11 @@
+// Preloader Logic
+window.addEventListener("load", () => {
+    const preloader = document.getElementById("preloader");
+    setTimeout(() => {
+        preloader.classList.add("loaded");
+    }, 500); // Small delay for smooth effect
+});
+
 // Typing Animation
 var typed = new Typed(".typing", {
     strings: ["Frontend Developer", "Backend Developer", "AI/ML Developer"],
