@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Clicker Script';
+    src: url('ClickerScript-Regular.woff2') format('woff2'),
+        url('ClickerScript-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
