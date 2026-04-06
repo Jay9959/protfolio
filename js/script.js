@@ -119,11 +119,34 @@ function asideSectionTogglerBtn() {
     navTogglerBtn.classList.toggle("open");
 }
 
-// Close aside when clicking a nav link (on mobile)
-document.querySelectorAll(".nav li a").forEach(link => {
-    link.addEventListener("click", () => {
-        if (window.innerWidth < 1200 && aside.classList.contains("open")) {
-            asideSectionTogglerBtn();
+// --- FIX FOR 'UNSAFE ATTEMPT' ERROR (FOR LOCAL FILES) ---
+// Prevent default hash-navigation and use scrollIntoView for all internal links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+        const targetId = this.getAttribute("href").substring(1);
+        if (!targetId || targetId === "") return; // Ignore empty links or just "#"
+
+        e.preventDefault();
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+            // Smoothly scroll to the section
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+
+            // Link Highlighting
+            document.querySelectorAll(".nav li a").forEach(l => l.classList.remove("active"));
+            if (this.closest('.nav')) {
+                this.classList.add("active");
+            } else {
+                // If button is clicked (like Hire Me), highlight the nav item
+                const navMatch = document.querySelector(`.nav li a[href="#${targetId}"]`);
+                if (navMatch) navMatch.classList.add("active");
+            }
+
+            // Close sidebar on mobile
+            if (window.innerWidth < 1200 && aside.classList.contains("open")) {
+                asideSectionTogglerBtn();
+            }
         }
     });
 });

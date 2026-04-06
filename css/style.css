@@ -952,6 +952,7 @@ h6 {
         flex: 0 0 100%;
         max-width: 100%;
         text-align: center;
+        order: 2; /* Move text below image */
     }
 
     .home-info p {
@@ -959,7 +960,15 @@ h6 {
     }
 
     .home .home-img {
-        display: none;
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 40px;
+        order: 1; /* Move image to top */
+    }
+
+    .home-img img {
+        width: 250px; /* Smaller image for mobile */
+        height: 250px;
     }
 }
 
