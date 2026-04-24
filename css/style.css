@@ -1060,3 +1060,25 @@ h6 {
         }
     }
 }
+/* --- EDUCATION & EXPERIENCE LAYOUT --- */
+.about .about-contant .education,
+.about .about-contant .experience {
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-top: 30px;
+}
+
+.about .about-contant .title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text-black-900);
+    margin-bottom: 30px;
+}
+
+@media (max-width: 991px) {
+    .about .about-contant .education,
+    .about .about-contant .experience {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}

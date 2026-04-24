@@ -8,7 +8,7 @@ window.addEventListener("load", () => {
 
 // Typing Animation
 var typed = new Typed(".typing", {
-    strings: ["Frontend Developer", "Backend Developer", "AI/ML Developer"],
+    strings: ["Frontend Developer", "Backend Developer" ],
     typeSpeed: 80,
     backSpeed: 40,
     loop: true,
